@@ -5,7 +5,23 @@ $(function() {
     initCate()
         // 初始化富文本编辑器
     initEditor()
+        //渲染页面
+    renderPart()
 
+    function renderPart() {
+        //从浏览器中拿去数据
+        var partData = sessionStorage["par1"]
+        var res = JSON.parse(partData)
+        console.log(res)
+            //将内容放放到模板中
+            //这边自己赋值 没有循环
+        $('#title').val(res.data.title)
+            // 'optin[value="' + res.data.id + '"]'
+        $('#cate_id').find('option[value="' + res.data.cate_id + '"]').attr("selected", true)
+        $('#content').val(res.data.content)
+        console.log(res.data.title)
+            // form.render()
+    }
     // 定义加载文章分类的方法
     function initCate() {
         $.ajax({
